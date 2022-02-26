@@ -1,7 +1,8 @@
 import axios from 'axios'
 import GenerateTokenizedHeader from './GenerateTokenizedHeader'
 
-const baseURL = 'http://localhost:8080/api/auth'
+const backendURL = process.env.BACKEND_URL || 'localhost:8080'
+const baseURL = `http://${backendURL}/api/auth`
 
 const login = async credentials => {
     const response = await axios.post(`${baseURL}/login`, credentials)
