@@ -2,6 +2,7 @@ import axios from 'axios'
 import GenerateTokenizedHeader from './GenerateTokenizedHeader'
 
 const backendURL = process.env.BACKEND_URL || 'localhost:8080'
+console.log('*** Backendin url: ', backendURL)
 const baseURL = `http://${backendURL}/api/auth`
 
 const login = async credentials => {

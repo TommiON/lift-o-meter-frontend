@@ -1,7 +1,10 @@
 import axios from 'axios'
 import GenerateTokenizedHeader from './GenerateTokenizedHeader'
 
-const baseURL = 'http://localhost:8080/api/cycle'
+const backendURL = process.env.BACKEND_URL || 'localhost:8080'
+console.log('*** Backendin url: ', backendURL)
+const baseURL = `http://${backendURL}/api/cycle`
+
 const config = GenerateTokenizedHeader()
 
 const getCurrent = async () => {

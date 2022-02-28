@@ -1,7 +1,9 @@
 import axios from 'axios'
 import GenerateTokenizedHeader from './GenerateTokenizedHeader'
 
-const baseURL = 'http://localhost:8080/api/workout'
+const backendURL = process.env.BACKEND_URL || 'localhost:8080'
+console.log('*** Backendin url: ', backendURL)
+const baseURL = `http://${backendURL}/api/workout`
 
 const getNext = async () => {
     const config = GenerateTokenizedHeader()
