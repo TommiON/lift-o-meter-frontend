@@ -1,7 +1,9 @@
 import axios from 'axios'
 import GenerateTokenizedHeader from './GenerateTokenizedHeader'
 
-const baseURL = 'http://localhost:8080/api/users'
+const backendURL = process.env.REACT_APP_BACKEND_URL || 'localhost:8080'
+const baseURL = `http://${backendURL}/api/users`
+
 const config = GenerateTokenizedHeader()
 
 const getAll = async () => {
