@@ -2,7 +2,7 @@ import axios from 'axios'
 import GenerateTokenizedHeader from './GenerateTokenizedHeader'
 
 const backendURL = process.env.REACT_APP_BACKEND_URL || 'localhost:8080'
-const baseURL = `http://${backendURL}/api/moveset`
+const baseURL = `https://${backendURL}/api/moveset`
 
 const putChanged = async (id, reps) => {
     const url = `${baseURL}/${id}`
