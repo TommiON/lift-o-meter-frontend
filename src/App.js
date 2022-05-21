@@ -27,18 +27,6 @@ function App() {
     error: false
   })
 
-  const [test, setTest] = useState(null)
-
-  useEffect(() => {
-    HealthCheckService
-      .healthCheck()
-      .then(response => {
-        console.log('Terveystarkastuksen tulos: ', response)
-        setTest(response)
-      })
-      .catch(error => error)
-  }, [])
-
   useEffect(() => {
     const username = window.localStorage.getItem('username')
     if (username) {
@@ -87,7 +75,6 @@ function App() {
 
   return (
     <Container>
-      <p>Terveystarkastuksen tulos: {test} </p>
       <BrowserRouter>
         <NavigationBar logoutFunction={() => logout()} loggedIn={loggedUser} />
         <Notification message={notification.message} error={notification.error} />
