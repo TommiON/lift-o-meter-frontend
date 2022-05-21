@@ -16,7 +16,6 @@ import Notification from './components/Notification'
 import Container from 'react-bootstrap/Container'
 import NavigationBar from './components/NavigationBar'
 //import { Button, Spinner } from 'react-bootstrap'
-import HealthCheckService from './services/HealthCheckService'
 
 function App() {
   
