@@ -16,6 +16,7 @@ import Notification from './components/Notification'
 import Container from 'react-bootstrap/Container'
 import NavigationBar from './components/NavigationBar'
 //import { Button, Spinner } from 'react-bootstrap'
+import HealthCheckService from './services/HealthCheckService'
 
 function App() {
   
@@ -25,6 +26,18 @@ function App() {
     message: '',
     error: false
   })
+
+  const [test, setTest] = useState(null)
+
+  useEffect(() => {
+    HealthCheckService
+      .healthCheck()
+      .then(response => {
+        console.log('Terveystarkastuksen tulos: ', response)
+        setTest(response)
+      })
+      .catch(error => error)
+  }, [])
 
   useEffect(() => {
     const username = window.localStorage.getItem('username')
@@ -74,6 +87,7 @@ function App() {
 
   return (
     <Container>
+      <p>Terveystarkastuksen tulos: {test} </p>
       <BrowserRouter>
         <NavigationBar logoutFunction={() => logout()} loggedIn={loggedUser} />
         <Notification message={notification.message} error={notification.error} />
