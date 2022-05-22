@@ -3,7 +3,8 @@ import { Form, Row, Col, Button } from 'react-bootstrap'
 
 // import { StandardButton } from '../styles/Buttons'
 // import { Input} from '../styles/styles'
-import AuthService from '../services/AuthService'
+//import AuthService from '../services/AuthService'
+import UserService from '../services/UserService'
 
 const UserAdder = ({ visible, notificationCallback }) => {
 
@@ -11,9 +12,9 @@ const UserAdder = ({ visible, notificationCallback }) => {
         username: '',
         password: '',
         bestSquat: '',
-        bestBenchPress: '',
-        bestBarbellRow: '',
-        bestOverheadPress: '',
+        bestBenchpress: '',
+        bestRow: '',
+        bestOverheadpress: '',
         bestDeadlift: ''
     })
 
@@ -21,7 +22,7 @@ const UserAdder = ({ visible, notificationCallback }) => {
     const [errors, setErrors] = useState({})
    
     const validateForErrors = () => {
-        const {username, password, bestSquat, bestBenchPress, bestBarbellRow, bestOverheadPress, bestDeadlift} = userdata
+        const {username, password, bestSquat, bestBenchpress, bestRow, bestOverheadpress, bestDeadlift} = userdata
         const newErrors = {}
 
         if (!username || username.length < 3) newErrors.username = 'Käyttäjätunnuksen pitää olla vähintään 3 merkkiä'
@@ -35,17 +36,17 @@ const UserAdder = ({ visible, notificationCallback }) => {
         if (bestSquat && bestSquat < 20) newErrors.bestSquat = 'Epärealistisen pieni'
         if (bestSquat > 300) newErrors.bestSquat = 'Epärealistisen suuri'
        
-        if (!bestBenchPress || bestBenchPress === '') newErrors.bestBenchPress = 'Puuttuu'
-        if (bestBenchPress && bestBenchPress < 10) newErrors.bestBenchPress = 'Epärealistisen pieni'
-        if (bestBenchPress > 200) newErrors.bestBenchPress = 'Epärealistisen suuri'
+        if (!bestBenchpress || bestBenchpress === '') newErrors.bestBenchpress = 'Puuttuu'
+        if (bestBenchpress && bestBenchpress < 10) newErrors.bestBenchpress = 'Epärealistisen pieni'
+        if (bestBenchpress > 200) newErrors.bestBenchPress = 'Epärealistisen suuri'
 
-        if (!bestBarbellRow || bestBarbellRow === '') newErrors.bestBarbellRow = 'Puuttuu'
-        if (bestBarbellRow && bestBarbellRow < 10) newErrors.bestBarbellRow = 'Epärealistisen pieni'
-        if (bestBarbellRow > 200) newErrors.bestBarbellRow = 'Epärealistisen suuri'
+        if (!bestRow || bestRow === '') newErrors.bestRow = 'Puuttuu'
+        if (bestRow && bestRow < 10) newErrors.bestRow = 'Epärealistisen pieni'
+        if (bestRow > 200) newErrors.bestRow = 'Epärealistisen suuri'
 
-        if (!bestOverheadPress || bestOverheadPress === '') newErrors.bestOverheadPress = 'Puuttuu'
-        if (bestBarbellRow && bestBarbellRow < 10) newErrors.bestBarbellRow = 'Epärealistisen pieni'
-        if (bestBarbellRow > 200) newErrors.bestBarbellRow = 'Epärealistisen suuri'
+        if (!bestOverheadpress || bestOverheadpress === '') newErrors.bestOverheadpress = 'Puuttuu'
+        if (bestRow && bestRow < 10) newErrors.bestRow = 'Epärealistisen pieni'
+        if (bestRow > 200) newErrors.bestRow = 'Epärealistisen suuri'
 
         if (!bestDeadlift || bestDeadlift === '') newErrors.bestDeadlift = 'Puuttuu'
         if (bestDeadlift && bestDeadlift < 20) newErrors.bestDeadlift = 'Epärealistisen pieni'
@@ -80,8 +81,8 @@ const UserAdder = ({ visible, notificationCallback }) => {
         if(Object.keys(newErrors).length > 0) {
             setErrors(newErrors)
         } else {
-            AuthService
-                .signup(userdata)
+            UserService
+                .postNew(userdata)
                 .then(response => {
                     console.log('** UserAdder, handleSubmit, lisätään: ', response)
                     notificationCallback(`Käyttäjätili lisätty. Kirjaudu sisään, ${userdata.username}!`, false)
@@ -96,9 +97,9 @@ const UserAdder = ({ visible, notificationCallback }) => {
                 username: '',
                 password: '',
                 bestSquat: '',
-                bestBenchPress: '',
-                bestBarbellRow: '',
-                bestOverheadPress: '',
+                bestBenchpress: '',
+                bestRow: '',
+                bestOverheadpress: '',
                 bestDeadlift: ''
             })
             setPasswordConfirmation('')
@@ -180,12 +181,12 @@ const UserAdder = ({ visible, notificationCallback }) => {
                     <Col sm={10}>
                         <Form.Control
                             type='number'
-                            name='bestBenchPress'
-                            value={userdata.bestBenchPress}
+                            name='bestBenchpress'
+                            value={userdata.bestBenchpress}
                             placeholder='kg'
                             onChange={handleChange}
-                            isInvalid={ !!errors.bestBenchPress}/>
-                        <Form.Control.Feedback type='invalid'>{ errors.bestBenchPress }</Form.Control.Feedback>
+                            isInvalid={ !!errors.bestBenchpress}/>
+                        <Form.Control.Feedback type='invalid'>{ errors.bestBenchpress }</Form.Control.Feedback>
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -193,12 +194,12 @@ const UserAdder = ({ visible, notificationCallback }) => {
                     <Col sm={10}>
                         <Form.Control
                             type='number'
-                            name='bestBarbellRow'
-                            value={userdata.bestBarbellRow}
+                            name='bestRow'
+                            value={userdata.bestRow}
                             placeholder='kg'
                             onChange={handleChange}
-                            isInvalid={ !!errors.bestBarbellRow}/>
-                        <Form.Control.Feedback type='invalid'>{ errors.bestBarbellRow }</Form.Control.Feedback>
+                            isInvalid={ !!errors.bestRow}/>
+                        <Form.Control.Feedback type='invalid'>{ errors.bestRow }</Form.Control.Feedback>
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -206,12 +207,12 @@ const UserAdder = ({ visible, notificationCallback }) => {
                     <Col sm={10}>
                         <Form.Control
                             type='number'
-                            name='bestOverheadPress'
-                            value={userdata.bestOverheadPress}
+                            name='bestOverheadpress'
+                            value={userdata.bestOverheadpress}
                             placeholder='kg'
                             onChange={handleChange}
-                            isInvalid={ !!errors.bestOverheadPress}/>
-                        <Form.Control.Feedback type='invalid'>{ errors.bestOverheadPress }</Form.Control.Feedback>
+                            isInvalid={ !!errors.bestOverheadpress}/>
+                        <Form.Control.Feedback type='invalid'>{ errors.bestOverheadpress }</Form.Control.Feedback>
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>

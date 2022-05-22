@@ -1,14 +1,22 @@
 import axios from 'axios'
 import GenerateTokenizedHeader from './GenerateTokenizedHeader'
+import BackendURLConfig from '../utils/BackendURLConfig'
 
-const backendURL = process.env.REACT_APP_BACKEND_URL || 'localhost:8080'
-const baseURL = `https://${backendURL}/api/users`
+const backendURL = BackendURLConfig()
+const baseURL = `${backendURL}/api/users`
 const config = GenerateTokenizedHeader()
 
 const getAll = async () => {
-    const response = await axios.get(`${baseURL}/all`, config)
+    const response = await axios.get(`${baseURL}`, config)
     return response.data
 }
+
+const postNew = async (newUserInfo) => {
+    const response = await axios.post(`${baseURL}`, newUserInfo)
+    return response
+}
+
+// tästä eteenpäin vanhoja -->
 
 const getCurrent = async () => {
     const response = await axios.get(`${baseURL}/current_user`, config)
@@ -18,11 +26,6 @@ const getCurrent = async () => {
 const getOne = async (id) => {
     const response = await axios.get(`${baseURL}/${id}`)
     return response.data
-}
-
-const postNew = async (data) => {
-    const response = await axios.post(`${baseURL}`, data)
-    return response
 }
 
 const deleteOne = async (id) => {
