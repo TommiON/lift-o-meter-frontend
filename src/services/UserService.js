@@ -1,25 +1,24 @@
 import axios from 'axios'
-import GenerateTokenizedHeader from './GenerateTokenizedHeader'
+import GenerateTokenizedHeader from '../utils/GenerateTokenizedHeader'
 import BackendURLConfig from '../utils/BackendURLConfig'
 
 const backendURL = BackendURLConfig()
 const baseURL = `${backendURL}/api/users`
-const config = GenerateTokenizedHeader()
 
 const getAll = async () => {
-    const response = await axios.get(`${baseURL}`, config)
+    const response = await axios.get(`${baseURL}`, GenerateTokenizedHeader())
     return response.data
 }
 
 const postNew = async (newUserInfo) => {
     const response = await axios.post(`${baseURL}`, newUserInfo)
-    return response
+    return response.data
 }
 
 // tästä eteenpäin vanhoja -->
-
+/*
 const getCurrent = async () => {
-    const response = await axios.get(`${baseURL}/current_user`, config)
+    const response = await axios.get(`${baseURL}/current_user`, GenerateTokenizedHeader())
     return response.data
 }
 
@@ -33,5 +32,6 @@ const deleteOne = async (id) => {
     const response = await axios.delete(`${baseURL}/${id}`)
     return response
 }
+*/
 
-export default { getAll, getOne, getCurrent, postNew, deleteOne }
+export default { getAll, postNew }

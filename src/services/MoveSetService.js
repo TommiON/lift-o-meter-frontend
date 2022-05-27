@@ -1,5 +1,5 @@
 import axios from 'axios'
-import GenerateTokenizedHeader from './GenerateTokenizedHeader'
+import GenerateTokenizedHeader from '../utils/GenerateTokenizedHeader'
 
 const backendURL = process.env.REACT_APP_BACKEND_URL || 'localhost:3001'
 const baseURL = `https://${backendURL}/api/moveset`

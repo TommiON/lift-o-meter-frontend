@@ -57,5 +57,7 @@
 **27.11.**|Frontend ja backend, konfiguroinnin muutoksia, testien muutoksia|1
 **22.2.2022**|Backendin refaktorointi omaksi repokseen, CI/CD-putken rakentamista, ensimmäinen deployment Herokuun|4
 **21.5.2022**|Spring-backendin hylkääminen (ylitsekäymätön CORS-ongelma), uuden Node-backendin perustaminen|4
-22.5.2022|Backend, User-entityn ja -controllerin aloitus; vastaava muutos frontendiin|3
-||yhteensä|225
+22.5.|Backend, User-entityn ja -controllerin aloitus; vastaava muutos frontendiin|3
+26.5|Backend, kirjautumistoiminnallisuuden perustukset|2
+27.5|Frontend, kirjautumis- ja käyttäjänlisäystoiminnallisuus toimimaan uuden backendin kanssa. Refaktorointia|3
+||yhteensä|230

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import SpinnerIndicator from './SpinnerIndicator'
-import { FindUniqueEntries, GetPlainName } from '../services/WorkoutHelpers'
-import { FormatDateString } from '../services/FormatDateString'
+import { FindUniqueEntries, GetPlainName } from '../utils/WorkoutHelpers'
+import { FormatDateString } from '../utils/FormatDateString'
 
 const ArchivedWorkout = ( {workoutData} ) => {
 

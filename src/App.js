@@ -14,7 +14,6 @@ import NavigationBar from './components/NavigationBar'
 function App() {
   
   const [loggedUser, setLoggedUser] = useState(null)
-  
   const [notification, setNotification] = useState({
     message: '',
     error: false
@@ -44,7 +43,7 @@ function App() {
             .login(userdata)
             .then(response => {
                 window.localStorage.setItem('username', response.data.username)
-                window.localStorage.setItem('accessToken', response.data.accessToken)
+                window.localStorage.setItem('accessToken', response.data.token)
                 setLoggedUser(response.data.username)
                 notify(`Tervetuloa, ${window.localStorage.getItem('username')}!`)
               })
@@ -59,10 +58,11 @@ function App() {
             .then(response => {
                 window.localStorage.removeItem('username')
                 window.localStorage.removeItem('accessToken')
+                notify(`Nähdään taas, ${window.localStorage.getItem('username')}!`)
                 setLoggedUser(null)
             })
             .catch(error => {
-                
+                console.log(error)
             })
   }
 

@@ -4,8 +4,8 @@ import workoutService from '../services/WorkoutService'
 import moveSetService from '../services/MoveSetService'
 import MoveSet from './MoveSet'
 import { StandardButton } from '../styles/Buttons'
-import DecreaseUsingRollover from '../services/DecreaseUsingRollover'
-import {FindUniqueEntries, GetPlainName} from '../services/WorkoutHelpers'
+import DecreaseUsingRollover from '../utils/DecreaseUsingRollover'
+import {FindUniqueEntries, GetPlainName} from '../utils/WorkoutHelpers'
 
 const Workout = () => {
 
@@ -19,6 +19,7 @@ const Workout = () => {
     const [started, setStarted] = useState(false)
 
     useEffect(() => {
+        /*
         workoutService
                     .getNext()
                     .then(response => {
@@ -32,6 +33,7 @@ const Workout = () => {
                     .catch(
                         error => console.log('Workouttien lataaminen meni vituiksi', error.response)
                     )
+                    */
     }, [])
 
     const handleClick = (id) => {

@@ -1,6 +1,7 @@
 const GenerateTokenizedHeader = () => {
     const accessToken = window.localStorage.getItem('accessToken')
     let config = null
+    
     if(accessToken) {
         const headerLine = 'Bearer '.concat(accessToken)
         config = {
