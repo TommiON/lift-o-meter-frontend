@@ -60,4 +60,5 @@
 22.5.|Backend, User-entityn ja -controllerin aloitus; vastaava muutos frontendiin|3
 26.5|Backend, kirjautumistoiminnallisuuden perustukset|2
 27.5|Frontend, kirjautumis- ja käyttäjänlisäystoiminnallisuus toimimaan uuden backendin kanssa. Refaktorointia|3
-||yhteensä|230
+**4.6.2022**|Backend, tietokantamallin laajentaminen (Workout ja Exercise)|2
+||yhteensä|232

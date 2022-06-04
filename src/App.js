@@ -56,9 +56,9 @@ function App() {
     AuthService
             .logout()
             .then(response => {
+                notify(`Nähdään taas, ${window.localStorage.getItem('username')}!`)
                 window.localStorage.removeItem('username')
                 window.localStorage.removeItem('accessToken')
-                notify(`Nähdään taas, ${window.localStorage.getItem('username')}!`)
                 setLoggedUser(null)
             })
             .catch(error => {
