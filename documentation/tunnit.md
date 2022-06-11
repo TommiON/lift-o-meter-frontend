@@ -61,4 +61,9 @@
 26.5|Backend, kirjautumistoiminnallisuuden perustukset|2
 27.5|Frontend, kirjautumis- ja käyttäjänlisäystoiminnallisuus toimimaan uuden backendin kanssa. Refaktorointia|3
 **4.6.2022**|Backend, tietokantamallin laajentaminen (Workout ja Exercise)|2
-||yhteensä|232
+5.6.|Backend, Workoutin rakentamistoiminnallisuutta|4
+6.6.|Backend, Workoutin ja Exercisen rakentamistoiminnallisuutta|4
+7.6|Backend, lisää Workoutin ja Exercisen rakentamistoiminnallisuutta|3
+8.6|Backend, päätoiminnallisuudet valmiiksi|4
+12.6|Frontend, workout-listan implementointia|4
+||yhteensä|247

@@ -1,41 +1,57 @@
 import axios from 'axios'
 import GenerateTokenizedHeader from '../utils/GenerateTokenizedHeader'
+import BackendURLConfig from '../utils/BackendURLConfig'
 
-const backendURL = process.env.REACT_APP_BACKEND_URL || 'localhost:3001'
-const baseURL = `https://${backendURL}/api/workout`
+const backendURL = BackendURLConfig()
+const baseURL = `${backendURL}/api/workouts`
 
+const get = async () => {
+    const url = baseURL
+    const config = GenerateTokenizedHeader()
+    const workouts = await axios.get(url, config)
+    return workouts.data
+}
+
+const start = async (id) => {
+    const url = `${baseURL}/${id}/start`
+    const config = GenerateTokenizedHeader()
+    const response = await axios.put(url, {}, config)
+    return response.data
+}
+
+const finish = async (id) => {
+    const url = `${baseURL}/${id}/finish`
+    const config = GenerateTokenizedHeader()
+    const response = await axios.put(url, {}, config)
+    return response.data
+}
+
+/*
 const getNext = async () => {
     const config = GenerateTokenizedHeader()
     const response = await axios.get(`${baseURL}/next`, config)
     return response.data
 }
+*/
 
-const start = async (id) => {
-    const url = `${baseURL}/start/${id}`
-    const config = GenerateTokenizedHeader()
-    const response = await axios.get(url, config)
-    return response.data
-}
 
+
+/*
 const reset = async (id) => {
     const url = `${baseURL}/reset/${id}`
     const config = GenerateTokenizedHeader()
     const response = await axios.get(url, config)
     return response.data
 }
+*/
 
-const finish = async (id) => {
-    const url = `${baseURL}/finish/${id}`
-    const config = GenerateTokenizedHeader()
-    const response = await axios.get(url, config)
-    return response.data
-}
-
+/*
 const getCompleted = async () => {
     const url = `${baseURL}/completed/`
     const config = GenerateTokenizedHeader()
     const response = await axios.get(url, config)
     return response.data
 }
+*/
 
-export default { getNext, start, reset, finish, getCompleted }
+export default { get, start, finish }
