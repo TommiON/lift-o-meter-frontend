@@ -17,11 +17,9 @@ const WorkoutList = ({ notificationCallback }) => {
     }, [])
 
     useEffect(() => {
-        console.log('STATE PÄIVITTYY, NYT: ', workouts)
+        console.log('State päivittynyt, nyt: ', workouts)
     }, [workouts])
   
-    console.log('STATE: ', workouts)
-
     const startWorkout = async (id) => {
         const changedWorkout = await workoutService.start(id)
         const index = workouts.findIndex(element => element.id === id)
@@ -33,14 +31,20 @@ const WorkoutList = ({ notificationCallback }) => {
 
     const finishWorkout = async (id) => {
         const finishResponse = await workoutService.finish(id)
+
         const completedWorkout = finishResponse.completed
-        const nextWorkout = finishResponse.next
         const index = workouts.findIndex(element => element.id === id)
         const workoutDataAsArray = []
         workouts.map(w => workoutDataAsArray.push(w))
         workoutDataAsArray[index] = completedWorkout
-        workoutDataAsArray.unshift(nextWorkout)
-        setWorkouts(workoutDataAsArray)
+        
+        // quick and ridiculous hack...
+        setTimeout(async () => {
+            const nextWorkoutId = finishResponse.idForNext
+            const nextWorkout = await workoutService.getOne(nextWorkoutId)
+            workoutDataAsArray.unshift(nextWorkout)
+            setWorkouts(workoutDataAsArray)
+        }, 1000)
     }
 
     if(!workouts) {
@@ -63,9 +67,5 @@ const WorkoutList = ({ notificationCallback }) => {
         </div>
     )
 }
-
-/*
- 
-                                 */
 
 export default WorkoutList

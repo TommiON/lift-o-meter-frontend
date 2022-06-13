@@ -12,6 +12,13 @@ const get = async () => {
     return workouts.data
 }
 
+const getOne = async (id) => {
+    const url = `${baseURL}/${id}`
+    const config = GenerateTokenizedHeader()
+    const workout = await axios.get(url, config)
+    return workout.data
+}
+
 const start = async (id) => {
     const url = `${baseURL}/${id}/start`
     const config = GenerateTokenizedHeader()
@@ -26,32 +33,4 @@ const finish = async (id) => {
     return response.data
 }
 
-/*
-const getNext = async () => {
-    const config = GenerateTokenizedHeader()
-    const response = await axios.get(`${baseURL}/next`, config)
-    return response.data
-}
-*/
-
-
-
-/*
-const reset = async (id) => {
-    const url = `${baseURL}/reset/${id}`
-    const config = GenerateTokenizedHeader()
-    const response = await axios.get(url, config)
-    return response.data
-}
-*/
-
-/*
-const getCompleted = async () => {
-    const url = `${baseURL}/completed/`
-    const config = GenerateTokenizedHeader()
-    const response = await axios.get(url, config)
-    return response.data
-}
-*/
-
-export default { get, start, finish }
+export default { get, getOne, start, finish }

@@ -84,7 +84,6 @@ const UserAdder = ({ visible, notificationCallback }) => {
             UserService
                 .postNew(userdata)
                 .then(response => {
-                    console.log('** UserAdder, handleSubmit, lisätään: ', response)
                     notificationCallback(`Käyttäjätili lisätty. Kirjaudu sisään, ${userdata.username}!`, false)
                 })
                 .catch(error => {

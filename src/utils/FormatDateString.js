@@ -9,7 +9,13 @@ export const FormatDateString = string => {
     return null
 }
 
-const getMonth = month => {
+const getMonth = rawMonth => {
+    let month
+    if(rawMonth.length == 2) {
+        month = rawMonth.substring(1)
+    } else {
+        month = rawMonth
+    }
     switch(month) {
         case '1': return 'tammikuuta'
         case '2': return 'helmikuuta'

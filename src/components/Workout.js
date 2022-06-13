@@ -7,6 +7,7 @@ import { StandardButton } from '../styles/Buttons'
 import DecreaseUsingRollover from '../utils/DecreaseUsingRollover'
 import { FormatDateString } from '../utils/FormatDateString'
 import {FindUniqueEntries, GetPlainName} from '../utils/WorkoutHelpers'
+import Exercise from './Exercise'
 
 const Workout = ({ id, serialNumber, started, finished, date, exercises, startCallback, finishCallback }) => {
 
@@ -29,9 +30,9 @@ const Workout = ({ id, serialNumber, started, finished, date, exercises, startCa
 
     return(
         <div>
-            {upcoming ? <h6>{serialNumber} Seuraavana <StandardButton onClick={() => start(id)}>Aloita</StandardButton> </h6> : ''}
-            {active ? <h6>{serialNumber} Nyt <StandardButton onClick={() => finish(id)}>Valmis</StandardButton></h6> : ''}
-            {done ?  <h6>{serialNumber} {FormatDateString(date)}</h6> : ''}
+            {upcoming ? <h6><StandardButton onClick={() => start(id)}>Aloita {serialNumber}. treeni</StandardButton> </h6> : ''}
+            {active ? <h6>Käynnissä: <StandardButton onClick={() => finish(id)}>Valmis</StandardButton></h6> : ''}
+            {done ?  <h6>{FormatDateString(date)}</h6> : ''}
             {exercises.map(
                 exercise => <p key={exercise.id}>{exercise.kind}</p>
             )}

@@ -66,4 +66,5 @@
 7.6|Backend, lisää Workoutin ja Exercisen rakentamistoiminnallisuutta|3
 8.6|Backend, päätoiminnallisuudet valmiiksi|4
 12.6|Frontend, workout-listan implementointia|4
-||yhteensä|247
+13.6.|Frontend ja backend, workoutien näyttämisen toiminnallisuus valmiiksi|2
+||yhteensä|249
