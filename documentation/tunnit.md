@@ -67,4 +67,5 @@
 8.6|Backend, päätoiminnallisuudet valmiiksi|4
 12.6|Frontend, workout-listan implementointia|4
 13.6.|Frontend ja backend, workoutien näyttämisen toiminnallisuus valmiiksi|2
-||yhteensä|249
+15.6|Frontend, Repetitions-komponentin lisääminen, implementointia|2
+||yhteensä|251

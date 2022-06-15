@@ -1,5 +1,5 @@
 const DecreaseUsingRollover = (value) => {
-    if(value < 1) {
+    if(value < 1 || value===null) {
         return 5
     } else {
         return value - 1

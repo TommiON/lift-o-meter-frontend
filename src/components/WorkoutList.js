@@ -17,7 +17,7 @@ const WorkoutList = ({ notificationCallback }) => {
     }, [])
 
     useEffect(() => {
-        console.log('State päivittynyt, nyt: ', workouts)
+        console.log('WorkoutListin state päivittynyt, nyt: ', workouts)
     }, [workouts])
   
     const startWorkout = async (id) => {
@@ -31,7 +31,6 @@ const WorkoutList = ({ notificationCallback }) => {
 
     const finishWorkout = async (id) => {
         const finishResponse = await workoutService.finish(id)
-
         const completedWorkout = finishResponse.completed
         const index = workouts.findIndex(element => element.id === id)
         const workoutDataAsArray = []
@@ -53,17 +52,11 @@ const WorkoutList = ({ notificationCallback }) => {
     
     return(
         <div>
+            <table>
             {workouts.map(
-                workout => <Workout key={workout.id}
-                                    id={workout.id}
-                                    serialNumber={workout.serialNumber}
-                                    started={workout.started}
-                                    finished={workout.finished}
-                                    date={workout.date}
-                                    exercises={workout.exercises}
-                                    startCallback={startWorkout}
-                                    finishCallback={finishWorkout} />
+                w => <Workout key={w.id} workout={w} startCallback={startWorkout} finishCallback={finishWorkout} />
             )}
+            </table>
         </div>
     )
 }

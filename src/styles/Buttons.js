@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+  import styled, { css } from 'styled-components'
 
 const StandardButton = styled.button`
   background: "bisque";
@@ -10,7 +10,7 @@ const StandardButton = styled.button`
   border-radius: 3px;
 `
 
-const MoveSetButton = styled.button`
+const RepButton = styled.button`
   background: "bisque";
   color: "black";
   font-size: 1em;
@@ -58,4 +58,4 @@ const MoveSetButton = styled.button`
   }
 `
 
-export { StandardButton, MoveSetButton }
+export { StandardButton, RepButton }

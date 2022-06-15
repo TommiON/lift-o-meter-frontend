@@ -1,42 +1,82 @@
 import React, {useState, useEffect} from 'react'
 import SpinnerIndicator from './SpinnerIndicator'
-import workoutService from '../services/WorkoutService'
-import moveSetService from '../services/MoveSetService'
-import MoveSet from './MoveSet'
 import { StandardButton } from '../styles/Buttons'
-import DecreaseUsingRollover from '../utils/DecreaseUsingRollover'
 import { FormatDateString } from '../utils/FormatDateString'
-import {FindUniqueEntries, GetPlainName} from '../utils/WorkoutHelpers'
 import Exercise from './Exercise'
 
-const Workout = ({ id, serialNumber, started, finished, date, exercises, startCallback, finishCallback }) => {
+const Workout = ({ workout, startCallback, finishCallback }) => {
 
-    const [upcoming, setUpcoming] = useState(!started && !finished)
-    const [active, setActive] = useState(started && !finished)
-    const [done, setDone] = useState(finished)
-    const [exerciseState, setExerciseState] = useState(exercises)
+    const [upcoming, setUpcoming] = useState(!workout.started && !workout.finished)
+    const [active, setActive] = useState(workout.started && !workout.finished)
+    const [done, setDone] = useState(workout.finished)
+    const [workoutState, setWorkoutState] = useState(workout)
 
     const start = (id) => {
-        setActive(true) // nämä veke, menee Workoutlistin tilan (tietokannan) kautta
+        setActive(true) // nämä veke, menee Workoutlistin tilan (tietokannan) kautta?
         setUpcoming(false) //
         startCallback(id)
     }
 
     const finish = (id) => {
-        setDone(true) // nämä veke, menee Workoutlistin tilan (tietokannan) kautta
+        setDone(true) // nämä veke, menee Workoutlistin tilan (tietokannan) kautta?
         setActive(false) //
         finishCallback(id)
     }
 
+    const updateReps = (exerciseName, reps) => {
+        console.log('Rep klik!', exerciseName, reps)
+    }
+
+    console.log('Workout, state: ', workoutState)
+
+    if(upcoming) {
+        return(
+            <div>
+            <tr>
+                <h6>Seuraavaksi:</h6>
+                {workout.exercises.map(
+                    exercise => <Exercise key={exercise.id} exerciseData={exercise} upcoming={upcoming} active={active} done={done} />
+                )}
+            </tr>
+            <tr>
+                <StandardButton onClick={() => start(workout.id)}>Aloita {workout.serialNumber}. treeni</StandardButton>
+            </tr>
+            </div>
+        )
+    }
+
+    if(active) {
+        return(
+            <div>
+            <tr>
+                {workout.exercises.map(
+                    exercise => <Exercise key={exercise.id} exerciseData={exercise} upcoming={upcoming} active={active} done={done} repUpdateCallback={updateReps}/>
+                )}
+            </tr>
+            <tr>
+                <StandardButton onClick={() => finish(workout.id)}>Valmis</StandardButton>
+            </tr>
+            </div>
+        )
+    }
+
+    if(done) {
+        return(
+            <div>
+            <tr>
+                <h6>{FormatDateString(workout.date)}</h6>
+            </tr>
+            <tr>
+                {workout.exercises.map(
+                    exercise => <Exercise key={exercise.id} exerciseData={exercise} upcoming={upcoming} active={active} done={done} />
+                )}
+            </tr>
+            </div>
+        )
+    }
+
     return(
-        <div>
-            {upcoming ? <h6><StandardButton onClick={() => start(id)}>Aloita {serialNumber}. treeni</StandardButton> </h6> : ''}
-            {active ? <h6>Käynnissä: <StandardButton onClick={() => finish(id)}>Valmis</StandardButton></h6> : ''}
-            {done ?  <h6>{FormatDateString(date)}</h6> : ''}
-            {exercises.map(
-                exercise => <p key={exercise.id}>{exercise.kind}</p>
-            )}
-        </div>
+        <SpinnerIndicator />
     )
 }
 
