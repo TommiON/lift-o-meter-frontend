@@ -26,10 +26,10 @@ const start = async (id) => {
     return response.data
 }
 
-const finish = async (id) => {
+const finish = async (id, reps) => {
     const url = `${baseURL}/${id}/finish`
     const config = GenerateTokenizedHeader()
-    const response = await axios.put(url, {}, config)
+    const response = await axios.put(url, reps, config)
     return response.data
 }
 

@@ -2,9 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { RepButton } from '../styles/Buttons'
 import DecreaseUsingRollover from '../utils/DecreaseUsingRollover'
 
-const Repetitions = (exerciseName, repUpdateCallback) => {
+const Repetitions = ({ exerciseName, repUpdateCallback }) => {
     const [reps, setReps] = useState([null, null, null, null, null])
-    const repButtons = []
 
     const updateRep = (index) => {
         let repArray = []
@@ -27,16 +26,18 @@ const Repetitions = (exerciseName, repUpdateCallback) => {
     }
 
     useEffect(() => {
-        console.log('Repetitions, ', exerciseName, 'state päivittyy: ', reps)
+        repUpdateCallback(reps)
     }, [reps])
 
+    const repButtons = []
+
     let amount = 5
-    if(exerciseName.exerciseName === 'DEADLIFT') {
+    if(exerciseName === 'DEADLIFT') {
         amount = 1
     }
 
     for(let i = 0; i < amount; i++) {
-        const button = <RepButton key={i} onClick={() => updateRep(i)}>{reps[i]=== null ? '?' : reps[i]}</RepButton>
+        const button = <RepButton key={i} onClick={() => updateRep(i)}>{reps[i]=== null ? ' ' : reps[i]}</RepButton>
         repButtons.push(button)
     }
 
@@ -44,7 +45,6 @@ const Repetitions = (exerciseName, repUpdateCallback) => {
         <div>
             {repButtons}
         </div>
-        
     )
 }
 

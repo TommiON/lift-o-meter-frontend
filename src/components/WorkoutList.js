@@ -29,8 +29,10 @@ const WorkoutList = ({ notificationCallback }) => {
         setWorkouts(workoutDataAsArray)
     }
 
-    const finishWorkout = async (id) => {
-        const finishResponse = await workoutService.finish(id)
+    const finishWorkout = async (id, reps) => {
+        console.log('Ylätaso saa valmiiksi tulleen: ', reps)
+        const finishResponse = await workoutService.finish(id, reps)
+
         const completedWorkout = finishResponse.completed
         const index = workouts.findIndex(element => element.id === id)
         const workoutDataAsArray = []
@@ -51,13 +53,11 @@ const WorkoutList = ({ notificationCallback }) => {
     }
     
     return(
-        <div>
-            <table>
+        <table>
             {workouts.map(
                 w => <Workout key={w.id} workout={w} startCallback={startWorkout} finishCallback={finishWorkout} />
             )}
-            </table>
-        </div>
+        </table>
     )
 }
 

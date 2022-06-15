@@ -9,7 +9,17 @@ const Workout = ({ workout, startCallback, finishCallback }) => {
     const [upcoming, setUpcoming] = useState(!workout.started && !workout.finished)
     const [active, setActive] = useState(workout.started && !workout.finished)
     const [done, setDone] = useState(workout.finished)
-    const [workoutState, setWorkoutState] = useState(workout)
+    const [exerciseState, setExerciseState] = useState({})
+
+    useEffect(() => {
+        const initialState = {}
+        workout.exercises.map(
+            e => {
+                initialState[e.kind] = []
+            }
+        )
+        setExerciseState(initialState)
+    }, [])
 
     const start = (id) => {
         setActive(true) // nämä veke, menee Workoutlistin tilan (tietokannan) kautta?
@@ -20,14 +30,19 @@ const Workout = ({ workout, startCallback, finishCallback }) => {
     const finish = (id) => {
         setDone(true) // nämä veke, menee Workoutlistin tilan (tietokannan) kautta?
         setActive(false) //
-        finishCallback(id)
+        finishCallback(id, exerciseState)
     }
 
-    const updateReps = (exerciseName, reps) => {
-        console.log('Rep klik!', exerciseName, reps)
+    const repsUpdated = (repsWithExerciseName) => {
+        //console.log('Workout saa: ', repsWithExerciseName)
+        const name = repsWithExerciseName.exerciseName
+        const reps = repsWithExerciseName.repetitions
+        setExerciseState({...exerciseState, [name]: reps})
     }
 
-    console.log('Workout, state: ', workoutState)
+    useEffect(() => {
+        //console.log('Workoutin tila: ', exerciseState)
+    }, [exerciseState])
 
     if(upcoming) {
         return(
@@ -50,7 +65,7 @@ const Workout = ({ workout, startCallback, finishCallback }) => {
             <div>
             <tr>
                 {workout.exercises.map(
-                    exercise => <Exercise key={exercise.id} exerciseData={exercise} upcoming={upcoming} active={active} done={done} repUpdateCallback={updateReps}/>
+                    exercise => <Exercise key={exercise.id} exerciseData={exercise} upcoming={upcoming} active={active} done={done} repUpdateCallback={repsUpdated} />
                 )}
             </tr>
             <tr>

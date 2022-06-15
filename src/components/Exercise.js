@@ -1,10 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import DecreaseUsingRollover from '../utils/DecreaseUsingRollover'
-import {FindUniqueEntries, GetPlainName} from '../utils/WorkoutHelpers'
-import { StandardButton, RepButton } from '../styles/Buttons'
+import { GetPlainName} from '../utils/WorkoutHelpers'
 import Repetitions from './Repetitions'
 
 const Exercise = ({ exerciseData, upcoming, active, done, repUpdateCallback }) => {
+
+    const repsUpdated = (reps) => {
+        const updated = {
+            exerciseName: exerciseData.kind,
+            repetitions: reps
+        }
+        repUpdateCallback(updated)
+    }
 
     if(upcoming) {
         return(
@@ -24,7 +30,7 @@ const Exercise = ({ exerciseData, upcoming, active, done, repUpdateCallback }) =
                 <tr>
                     <td>{GetPlainName(exerciseData.kind)}</td>
                     <td>{exerciseData.load} kg</td>
-                    <td><Repetitions exerciseName={exerciseData.kind}/></td>
+                    <td><Repetitions exerciseName={exerciseData.kind} repUpdateCallback={repsUpdated} /></td>
                 </tr>
             </div>
         )
