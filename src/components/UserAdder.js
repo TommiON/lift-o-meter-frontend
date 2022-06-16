@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
-import { Redirect, Navigate } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
 // import { StandardButton } from '../styles/Buttons'
 // import { Input} from '../styles/styles'
 //import AuthService from '../services/AuthService'
 import UserService from '../services/UserService'
+import { BigHeader } from '../styles/Text'
 
 const UserAdder = ({ visible, notificationCallback }) => {
 
@@ -121,7 +122,7 @@ const UserAdder = ({ visible, notificationCallback }) => {
 
     return(
         <div>
-            <h3>Lisää uusi käyttäjä</h3>
+            <BigHeader>Lisää uusi käyttäjä</BigHeader>
             <Form onSubmit={handleSubmit}>
                 <Form.Group as={Row}>
                     <Form.Label column sm={2}>Käyttäjätunnus</Form.Label>

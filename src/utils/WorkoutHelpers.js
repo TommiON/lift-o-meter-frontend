@@ -23,3 +23,7 @@ export const GetPlainName = (move) => {
     }
 }
 
+export const NordicNotation = (input) => {
+    return input.replace('.', ',')
+}
+

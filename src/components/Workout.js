@@ -3,6 +3,7 @@ import SpinnerIndicator from './SpinnerIndicator'
 import { StandardButton } from '../styles/Buttons'
 import { FormatDateString } from '../utils/FormatDateString'
 import Exercise from './Exercise'
+import { SmallHeader } from '../styles/Text'
 
 const Workout = ({ workout, startCallback, finishCallback }) => {
 
@@ -48,7 +49,7 @@ const Workout = ({ workout, startCallback, finishCallback }) => {
         return(
             <div>
             <tr>
-                <h6>Seuraavaksi:</h6>
+                <SmallHeader>Seuraavaksi:</SmallHeader>
                 {workout.exercises.map(
                     exercise => <Exercise key={exercise.id} exerciseData={exercise} upcoming={upcoming} active={active} done={done} />
                 )}
@@ -79,7 +80,7 @@ const Workout = ({ workout, startCallback, finishCallback }) => {
         return(
             <div>
             <tr>
-                <h6>{FormatDateString(workout.date)}</h6>
+                <SmallHeader>{FormatDateString(workout.date)}</SmallHeader>
             </tr>
             <tr>
                 {workout.exercises.map(

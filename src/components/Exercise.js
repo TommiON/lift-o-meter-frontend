@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { GetPlainName} from '../utils/WorkoutHelpers'
 import Repetitions from './Repetitions'
+import { NordicNotation } from '../utils/WorkoutHelpers'
 
 const Exercise = ({ exerciseData, upcoming, active, done, repUpdateCallback }) => {
 
@@ -17,19 +18,18 @@ const Exercise = ({ exerciseData, upcoming, active, done, repUpdateCallback }) =
             <div>
                 <tr>
                     <td>{GetPlainName(exerciseData.kind)}</td>
-                    <td>{exerciseData.load} kg</td>
+                    <td>{NordicNotation(exerciseData.load)} kg</td>
                 </tr>
             </div>
         )
     }
 
     if(active) {
-        let repIndex = -1
         return(
             <div>
                 <tr>
                     <td>{GetPlainName(exerciseData.kind)}</td>
-                    <td>{exerciseData.load} kg</td>
+                    <td>{NordicNotation(exerciseData.load)} kg</td>
                     <td><Repetitions exerciseName={exerciseData.kind} repUpdateCallback={repsUpdated} /></td>
                 </tr>
             </div>
@@ -41,7 +41,7 @@ const Exercise = ({ exerciseData, upcoming, active, done, repUpdateCallback }) =
             <div>
                 <tr>
                     <td>{GetPlainName(exerciseData.kind)}</td>
-                    <td>{exerciseData.load} kg</td>
+                    <td>{NordicNotation(exerciseData.load)} kg</td>
                 </tr>
             </div>
         )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StandardButton } from '../styles/Buttons'
 import { Input} from '../styles/styles'
+import { BigHeader } from '../styles/Text'
 
 const LoginScreen = ({ loginFunction, visible }) => {
     
@@ -33,7 +34,7 @@ const LoginScreen = ({ loginFunction, visible }) => {
 
     return(
         <div>
-            <h3>Kirjaudu sisään</h3>
+            <BigHeader>Kirjaudu sisään</BigHeader>
             <form onSubmit={handleSubmit}>
                 <table>
                     <tbody>
