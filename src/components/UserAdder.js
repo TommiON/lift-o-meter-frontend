@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom"
 //import AuthService from '../services/AuthService'
 import UserService from '../services/UserService'
 import { BigHeader } from '../styles/Text'
+import { StandardButton } from '../styles/Buttons'
 
 const UserAdder = ({ visible, notificationCallback }) => {
 
@@ -236,8 +237,8 @@ const UserAdder = ({ visible, notificationCallback }) => {
                         <Form.Control.Feedback type='invalid'>{ errors.bestDeadlift }</Form.Control.Feedback>
                     </Col>
                 </Form.Group>
-                <Button type='submit'>Rekisteröidy</Button>
-                <Button>Peruuta</Button>
+                <StandardButton type='submit'>Rekisteröidy</StandardButton>
+                <StandardButton>Peruuta</StandardButton>
             </Form>
         </div>
     )

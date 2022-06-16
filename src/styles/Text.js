@@ -1,13 +1,17 @@
 import styled from 'styled-components'
+import { Link } from "react-router-dom"
 
-const BigHeader = styled.h3`
+export const BigHeader = styled.h3`
     text-align: left;
     color: palevioletred;
 `
 
-const SmallHeader = styled.h6`
+export const SmallHeader = styled.h6`
     text-align: left;
     color: palevioletred;
 `
 
-export { BigHeader, SmallHeader }
+export const StyledLink = styled(Link)`
+  color: palevioletred;
+  font-weight: bold;
+`

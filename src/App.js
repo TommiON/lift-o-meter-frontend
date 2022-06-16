@@ -11,6 +11,7 @@ import Notification from './components/Notification'
 import Container from 'react-bootstrap/Container'
 import NavigationBar from './components/NavigationBar'
 import WorkoutList from './components/WorkoutList'
+import { StyledLink } from './styles/Text'
 
 function App() {
   
@@ -72,7 +73,8 @@ function App() {
                   {loggedUser ?
                       <Workout  /> 
                           : 
-                      <LoginScreen loginFunction={login} visible={!loggedUser} />
+                    
+                    <LoginScreen loginFunction={login} visible={!loggedUser} />
                   }
               </Route>
               <Route path="/workouts">
@@ -105,11 +107,7 @@ function App() {
                           :
                       <LoginScreen loginFunction={login} visible={!loggedUser} />
                   }
-                  {loggedUser ? 
-                      <p></p> 
-                          :
-                      <p>Ei käyttäjätunnusta? <Link to="/signup">Rekisteröidy</Link></p>
-                  }
+                
               </Route>
         </Switch>
         </BrowserRouter>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StandardButton } from '../styles/Buttons'
 import { Input} from '../styles/styles'
-import { BigHeader } from '../styles/Text'
+import { BigHeader, StyledLink } from '../styles/Text'
 
 const LoginScreen = ({ loginFunction, visible }) => {
     
@@ -49,6 +49,7 @@ const LoginScreen = ({ loginFunction, visible }) => {
                     </tbody>
                 </table>
                 <StandardButton type="submit">Kirjaudu</StandardButton>
+                <p>Ei käyttäjätunnusta? <StyledLink to="/signup">Rekisteröidy</StyledLink></p>
             </form>
         </div>
     )
