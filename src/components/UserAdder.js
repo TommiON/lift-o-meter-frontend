@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
+import { Redirect, Navigate } from "react-router-dom"
 
 // import { StandardButton } from '../styles/Buttons'
 // import { Input} from '../styles/styles'
@@ -20,6 +21,12 @@ const UserAdder = ({ visible, notificationCallback }) => {
 
     const [passwordConfirmation, setPasswordConfirmation] = useState(null)
     const [errors, setErrors] = useState({})
+
+    const [done, setDone] = useState(false)
+
+    if(done) {
+        return <Redirect to="/workouts" />
+    }        
    
     const validateForErrors = () => {
         const {username, password, bestSquat, bestBenchpress, bestRow, bestOverheadpress, bestDeadlift} = userdata
@@ -102,6 +109,7 @@ const UserAdder = ({ visible, notificationCallback }) => {
                 bestDeadlift: ''
             })
             setPasswordConfirmation('')
+            setDone(true)
         }
     }
 
