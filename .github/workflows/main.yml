@@ -2,8 +2,8 @@ name: CI/CD pipeline for Lift-o-Meter frontend
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
+  #push:
+  #  branches: [ master ]
   pull_request:
     branches: [ master ]
 
