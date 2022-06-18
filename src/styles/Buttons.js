@@ -6,54 +6,36 @@ export const StandardButton = styled.button`
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  border: 2px solid DarkOliveGreen;
   border-radius: 3px;
 `
 
 export const RepButton = styled.button`
-  background: "bisque";
+  background: DarkSeaGreen;
   color: "black";
   font-size: 1em;
   margin: 1em;
   padding: 0px;
-  border: 2px solid Chocolate;
+  border: 2px solid OliveDrab;
   border-radius: 3px;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
 
   ${props => 
     props.emptySet &&
     css`
-        background: Gainsboro;
+        background: LightGray;
         color: Black;
         border: 2px solid Gray;
     `
   }
 
   ${props => 
-    props.fullSet &&
+    props.failingSet &&
     css`
-        background: SpringGreen;
-        color: Black;
-        border: 2px solid Green;
-    `
-  }
-
-  ${props => 
-    props.partialSet &&
-    css`
-        background: LightCoral;
+        background: LightPink;
         color: Black;
         border: 2px solid Red;
-    `
-  }
-
-  ${props => 
-    props.passiveSet &&
-    css`
-        background: SteelBlue;
-        color: Black;
-        border: 2px solid SteelBlue;
     `
   }
 `

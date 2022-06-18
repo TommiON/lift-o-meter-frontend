@@ -9,9 +9,11 @@ import AccountDetails from './components/AccountDetails'
 import AuthService from './services/AuthService'
 import Notification from './components/Notification'
 import Container from 'react-bootstrap/Container'
-import NavigationBar from './components/NavigationBar'
 import WorkoutList from './components/WorkoutList'
 import { StyledLink } from './styles/Text'
+import { Page } from './styles/styles'
+import NavigationBar from './components/NavigationBar'
+import Stats from './components/Stats'
 
 function App() {
   
@@ -61,6 +63,7 @@ function App() {
   }
 
   return (
+    <Page>
       <Container>
           <BrowserRouter>
           <NavigationBar logoutFunction={() => logout()} loggedIn={loggedUser} />
@@ -84,9 +87,9 @@ function App() {
                       <LoginScreen loginFunction={login} visible={!loggedUser} />
                   }
               </Route>
-              <Route path="/completed">
+              <Route path="/stats">
                   {loggedUser ?
-                      <ArchivedWorkouts /> 
+                      <Stats /> 
                           : 
                       <LoginScreen loginFunction={login} visible={!loggedUser} />
                   }
@@ -112,6 +115,7 @@ function App() {
         </Switch>
         </BrowserRouter>
     </Container>
+    </Page>
   )
 }
 

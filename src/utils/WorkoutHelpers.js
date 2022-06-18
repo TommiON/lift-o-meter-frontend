@@ -27,3 +27,14 @@ export const NordicNotation = (input) => {
     return input.replace('.', ',')
 }
 
+export const SortWorkouts = (a, b) => {
+    const ordering = ['SQUAT', 'BENCH', 'ROW', 'OVERHEAD', 'DEADLIFT']
+    const indexOfA = ordering.indexOf(a.kind)
+    const indexOfB = ordering.indexOf(b.kind)
+    if(indexOfA > indexOfB) {
+        return 1
+    } else {
+        return -1
+    }
+}
+

@@ -3,15 +3,27 @@ import { Link } from "react-router-dom"
 
 export const BigHeader = styled.h3`
     text-align: left;
-    color: palevioletred;
+    color: DarkOliveGreen;
 `
 
 export const SmallHeader = styled.h6`
     text-align: left;
-    color: palevioletred;
+    color: DarkOliveGreen;
 `
 
 export const StyledLink = styled(Link)`
-  color: palevioletred;
-  font-weight: bold;
+    color: DarkOliveGreen;
+    font-weight: bold;
+`
+
+export const NavigationHeader = styled.h6`
+    color: black;
+    font-weight: bold;
+`
+
+export const NavigationLink = styled(Link)`
+    color: DarkOliveGreen;
+    font-weight: bold;
+    text-decoration: none;
+    
 `

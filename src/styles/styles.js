@@ -1,17 +1,19 @@
 import styled from 'styled-components'
+import { Navbar, Nav } from "react-bootstrap"
 
-const Input = styled.input`
+export const Input = styled.input`
   margin: 0.25em;
 `
-
-const Page = styled.div`
+export const Page = styled.div`
   padding: 1em;
-  background: papayawhip;
+  background: GhostWhite;
+  width: 640px;
+`
+export const Navigation = styled.div`
+  padding: 1em;
+  background: DarkSeaGreen;
 `
 
-const Navigation = styled.div`
-  background: BurlyWood;
-  padding: 1em;
+export const SeparatorLine = styled.hr`
+  width: 580px;
 `
-
-export { Input, Page, Navigation }

@@ -3,7 +3,9 @@ import SpinnerIndicator from './SpinnerIndicator'
 import { StandardButton } from '../styles/Buttons'
 import { FormatDateString } from '../utils/FormatDateString'
 import Exercise from './Exercise'
-import { SmallHeader } from '../styles/Text'
+import { BigHeader, SmallHeader } from '../styles/Text'
+import { SeparatorLine } from '../styles/styles'
+import { SortWorkouts } from '../utils/WorkoutHelpers'
 
 const Workout = ({ workout, startCallback, finishCallback }) => {
 
@@ -49,14 +51,15 @@ const Workout = ({ workout, startCallback, finishCallback }) => {
         return(
             <div>
             <tr>
-                <SmallHeader>Seuraavaksi:</SmallHeader>
-                {workout.exercises.map(
+                <BigHeader>Seuraavaksi:</BigHeader>
+                {workout.exercises.sort(SortWorkouts).map(
                     exercise => <Exercise key={exercise.id} exerciseData={exercise} upcoming={upcoming} active={active} done={done} />
                 )}
             </tr>
             <tr>
                 <StandardButton onClick={() => start(workout.id)}>Aloita {workout.serialNumber}. treeni</StandardButton>
             </tr>
+            <SeparatorLine />
             </div>
         )
     }
@@ -65,13 +68,14 @@ const Workout = ({ workout, startCallback, finishCallback }) => {
         return(
             <div>
             <tr>
-                {workout.exercises.map(
+                {workout.exercises.sort(SortWorkouts).map(
                     exercise => <Exercise key={exercise.id} exerciseData={exercise} upcoming={upcoming} active={active} done={done} repUpdateCallback={repsUpdated} />
                 )}
             </tr>
             <tr>
                 <StandardButton onClick={() => finish(workout.id)}>Valmis</StandardButton>
             </tr>
+            <SeparatorLine />
             </div>
         )
     }
@@ -80,13 +84,14 @@ const Workout = ({ workout, startCallback, finishCallback }) => {
         return(
             <div>
             <tr>
-                <SmallHeader>{FormatDateString(workout.date)}</SmallHeader>
+                <SmallHeader>{workout.serialNumber}. harjoitus ({FormatDateString(workout.date)})</SmallHeader>
             </tr>
             <tr>
-                {workout.exercises.map(
+                {workout.exercises.sort(SortWorkouts).map(
                     exercise => <Exercise key={exercise.id} exerciseData={exercise} upcoming={upcoming} active={active} done={done} />
                 )}
             </tr>
+            <SeparatorLine />
             </div>
         )
     }

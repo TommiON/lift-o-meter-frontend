@@ -1,42 +1,36 @@
 import React from 'react'
-import { Navbar, Nav } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { BigHeader, StyledLink, NavigationHeader, NavigationLink } from '../styles/Text'
+import { NavHeaderCell, NavLinkCell } from '../styles/Table'
+import { Navigation } from '../styles/styles'
 
 const NavigationBar = ( {logoutFunction, loggedIn } ) => {
 
     if(!loggedIn) {
         return(
-            <Navbar bg="primary" variant="dark" expand="md">
-                <Navbar.Brand as={Link} to="/">Lift-o-Meter</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                </Navbar.Collapse>
-            </Navbar>
+            <Navigation>
+                <table>
+                    <tr>
+                        <NavHeaderCell><NavigationHeader>Lift-o-meter</NavigationHeader></NavHeaderCell>
+                    </tr>
+                </table>
+            </Navigation>
         )
     }
 
     return(
-        <Navbar bg="primary" variant="dark" expand="md">
-            <Navbar.Brand as={Link} to="/">Lift-o-Meter</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    <Nav.Link as={Link} to="/next" variant="transparent" >
-                        Vuorossa
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/completed" >
-                        Aiemmat
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/profile" >
-                        Kehitys
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/logout" onClick={logoutFunction}>
-                        Kirjaudu ulos
-                    </Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
+        <Navigation>
+             <table>
+                <tr>
+                    <NavHeaderCell><NavigationHeader>Lift-o-meter</NavigationHeader></NavHeaderCell>
+                    <NavLinkCell><NavigationLink to="/workouts">Treenit</NavigationLink></NavLinkCell>
+                    <NavLinkCell><NavigationLink to="/stats">Kehitys</NavigationLink></NavLinkCell>
+                    <NavLinkCell><NavigationLink to="/profile">Profiili</NavigationLink></NavLinkCell>
+                    <NavLinkCell><NavigationLink to="/logout" onClick={logoutFunction}>Logout</NavigationLink></NavLinkCell>
+                </tr>
+            </table>
+        </Navigation>
     )
+
 }
 
 export default NavigationBar
