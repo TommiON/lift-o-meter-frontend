@@ -1,7 +1,7 @@
 import React from 'react'
 import { BigHeader, StyledLink, NavigationHeader, NavigationLink } from '../styles/Text'
 import { NavHeaderCell, NavLinkCell } from '../styles/Table'
-import { Navigation } from '../styles/styles'
+import { Navigation } from '../styles/General'
 
 const NavigationBar = ( {logoutFunction, loggedIn } ) => {
 

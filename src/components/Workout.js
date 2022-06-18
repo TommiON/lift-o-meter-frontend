@@ -4,7 +4,7 @@ import { StandardButton } from '../styles/Buttons'
 import { FormatDateString } from '../utils/FormatDateString'
 import Exercise from './Exercise'
 import { BigHeader, SmallHeader } from '../styles/Text'
-import { SeparatorLine } from '../styles/styles'
+import { SeparatorLine } from '../styles/General'
 import { SortWorkouts } from '../utils/WorkoutHelpers'
 
 const Workout = ({ workout, startCallback, finishCallback }) => {
@@ -57,7 +57,7 @@ const Workout = ({ workout, startCallback, finishCallback }) => {
                 )}
             </tr>
             <tr>
-                <StandardButton onClick={() => start(workout.id)}>Aloita {workout.serialNumber}. treeni</StandardButton>
+                <StandardButton onClick={() => start(workout.id)}>Aloita</StandardButton>
             </tr>
             <SeparatorLine />
             </div>

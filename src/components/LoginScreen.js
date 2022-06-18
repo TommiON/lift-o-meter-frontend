@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { StandardButton } from '../styles/Buttons'
-import { Input } from '../styles/styles'
+import { Input } from '../styles/General'
 import { BigHeader, StyledLink } from '../styles/Text'
 
 const LoginScreen = ({ loginFunction, visible }) => {

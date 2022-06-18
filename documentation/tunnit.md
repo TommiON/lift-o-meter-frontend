@@ -70,5 +70,5 @@
 15.6|Frontend, Repetitions-komponentin lisääminen. Treenikierron perustoiminnallisuudet valmiiksi|4
 16.6|Frontend, ulkoasun viilausta|2
 17.6.|Frontend, toistopainikkeiden väritoiminnallisuus, lisää ulkoasun viilausta|2
-18.6|Frontend, harjoitusten järjestämistoiminto, ulkoasun viilausta|2
-||yhteensä|259
+18.6|Frontend, harjoitusten järjestämistoiminto, ulkoasun viilausta, siivousta ja refaktorointia|3
+||yhteensä|260

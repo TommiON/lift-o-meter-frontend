@@ -9,7 +9,7 @@ export const ExerciseCell = styled.td`
 export const LoadCell = styled.td`
     text-align: left;
     vertical-align: middle;
-    width: 60px;
+    width: 80px;
 `
 
 export const RepCell = styled.td`

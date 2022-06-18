@@ -25,5 +25,16 @@ export const NavigationLink = styled(Link)`
     color: DarkOliveGreen;
     font-weight: bold;
     text-decoration: none;
-    
+`
+
+export const LoadText = styled.div`
+    font-weight: bold;
+`
+
+export const SucceededLoadText = styled(LoadText)`
+  color: ForestGreen;
+`
+
+export const FailedLoadText = styled(LoadText)`
+    color: red;
 `
