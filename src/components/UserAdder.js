@@ -6,8 +6,9 @@ import { Redirect } from "react-router-dom"
 // import { Input} from '../styles/styles'
 //import AuthService from '../services/AuthService'
 import UserService from '../services/UserService'
-import { BigHeader } from '../styles/Text'
+import { BigHeader, SmallHeader } from '../styles/Text'
 import { StandardButton } from '../styles/Buttons'
+import { StyledFormLabel, StyledFormError, StyledInput, StyledKgInput } from '../styles/Form'
 
 const UserAdder = ({ visible, notificationCallback }) => {
 
@@ -34,32 +35,33 @@ const UserAdder = ({ visible, notificationCallback }) => {
         const {username, password, bestSquat, bestBenchpress, bestRow, bestOverheadpress, bestDeadlift} = userdata
         const newErrors = {}
 
-        if (!username || username.length < 3) newErrors.username = 'Käyttäjätunnuksen pitää olla vähintään 3 merkkiä'
-        if (username.length > 20) newErrors.username = 'Käyttäjätunnus saa olla enintään 20 merkkiä'
+        if (!username || username.length < 3) newErrors.username = ' vähintään 3 merkkiä'
+        if (username.length > 20) newErrors.username = ' enintään 20 merkkiä'
 
-        if (!password || password.length < 5) newErrors.password = 'Salasanan pitää olla vähintään 5 merkkiä'
-        if (password.length > 20) newErrors.password = 'Salasana saa olla enintään 20 merkkiä'
-        if (password !== passwordConfirmation && password) newErrors.passwordConfirmation = 'Salasana ja sen varmistus eroavat'
+        if (!password || password.length < 5) newErrors.password = ' vähintään 5 merkkiä'
+        if (password.length > 20) newErrors.password = ' enintään 20 merkkiä'
+        if (password !== passwordConfirmation && password) newErrors.passwordConfirmation = ' eroavat'
 
-        if (!bestSquat || bestSquat === '') newErrors.bestSquat = 'Puuttuu'
-        if (bestSquat && bestSquat < 20) newErrors.bestSquat = 'Epärealistisen pieni'
-        if (bestSquat > 300) newErrors.bestSquat = 'Epärealistisen suuri'
+        if (!bestSquat || bestSquat === '') newErrors.bestSquat = ' puuttuu'
+        if (bestSquat && bestSquat < 20) newErrors.bestSquat = ' epärealistisen pieni'
+        if (bestSquat > 300) newErrors.bestSquat = ' epärealistisen suuri'
        
-        if (!bestBenchpress || bestBenchpress === '') newErrors.bestBenchpress = 'Puuttuu'
-        if (bestBenchpress && bestBenchpress < 10) newErrors.bestBenchpress = 'Epärealistisen pieni'
-        if (bestBenchpress > 200) newErrors.bestBenchPress = 'Epärealistisen suuri'
+        if (!bestBenchpress || bestBenchpress === '') newErrors.bestBenchpress = ' puuttuu'
+        if (bestBenchpress && bestBenchpress < 10) newErrors.bestBenchpress = ' epärealistisen pieni'
+        if (bestBenchpress > 200) newErrors.bestBenchPress = ' epärealistisen suuri'
+        console.log('huhuu? penkin virhetilanne: ', newErrors)
 
-        if (!bestRow || bestRow === '') newErrors.bestRow = 'Puuttuu'
-        if (bestRow && bestRow < 10) newErrors.bestRow = 'Epärealistisen pieni'
-        if (bestRow > 200) newErrors.bestRow = 'Epärealistisen suuri'
+        if (!bestRow || bestRow === '') newErrors.bestRow = ' puuttuu'
+        if (bestRow && bestRow < 10) newErrors.bestRow = ' epärealistisen pieni'
+        if (bestRow > 200) newErrors.bestRow = ' epärealistisen suuri'
 
-        if (!bestOverheadpress || bestOverheadpress === '') newErrors.bestOverheadpress = 'Puuttuu'
-        if (bestRow && bestRow < 10) newErrors.bestRow = 'Epärealistisen pieni'
-        if (bestRow > 200) newErrors.bestRow = 'Epärealistisen suuri'
+        if (!bestOverheadpress || bestOverheadpress === '') newErrors.bestOverheadpress = ' puuttuu'
+        if (bestRow && bestRow < 10) newErrors.bestRow = ' epärealistisen pieni'
+        if (bestRow > 200) newErrors.bestRow = ' epärealistisen suuri'
 
-        if (!bestDeadlift || bestDeadlift === '') newErrors.bestDeadlift = 'Puuttuu'
-        if (bestDeadlift && bestDeadlift < 20) newErrors.bestDeadlift = 'Epärealistisen pieni'
-        if (bestDeadlift > 300) newErrors.bestDeadlift = 'Epärealistisen suuri'
+        if (!bestDeadlift || bestDeadlift === '') newErrors.bestDeadlift = ' puuttuu'
+        if (bestDeadlift && bestDeadlift < 20) newErrors.bestDeadlift = ' epärealistisen pieni'
+        if (bestDeadlift > 300) newErrors.bestDeadlift = ' epärealistisen suuri'
 
         return newErrors
     }
@@ -124,122 +126,45 @@ const UserAdder = ({ visible, notificationCallback }) => {
     return(
         <div>
             <BigHeader>Lisää uusi käyttäjä</BigHeader>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Käyttäjätunnus</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type='text'
-                            name='username'
-                            value={userdata.username}
-                            placeholder='3-20 merkkiä'
-                            onChange={handleChange}
-                            isInvalid={ !!errors.username }/>
-                        <Form.Control.Feedback type='invalid'>{ errors.username }</Form.Control.Feedback>
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Salasana</Form.Label>
-                    <Col sm={6}>
-                        <Form.Control
-                            type='password'
-                            name='password'
-                            value={userdata.password}
-                            placeholder='5-20 merkkiä'
-                            onChange={handleChange}
-                            isInvalid={ !!errors.password }/>
-                        <Form.Control.Feedback type='invalid'>{ errors.password }</Form.Control.Feedback>
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}></Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type='password'
-                            name='password2'
-                            value={passwordConfirmation}
-                            placeholder='salasana uudelleen'
-                            onChange={handleChange}
-                            isInvalid={ !!errors.passwordConfirmation }/>
-                        <Form.Control.Feedback type='invalid'>{ errors.passwordConfirmation }</Form.Control.Feedback>
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Col sm={10}>
-                        <Form.Control
-                            plaintext
-                            readOnly
-                            defaultValue="Maksimitulos seuraavissa klassisissa voimailuliikkeissä" />
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Kyykky</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type='number'
-                            name='bestSquat'
-                            value={userdata.bestSquat}
-                            placeholder='kg'
-                            onChange={handleChange}
-                            isInvalid={ !!errors.bestSquat }/>
-                        <Form.Control.Feedback type='invalid'>{ errors.bestSquat }</Form.Control.Feedback>
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Penkkipunnerrus</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type='number'
-                            name='bestBenchpress'
-                            value={userdata.bestBenchpress}
-                            placeholder='kg'
-                            onChange={handleChange}
-                            isInvalid={ !!errors.bestBenchpress}/>
-                        <Form.Control.Feedback type='invalid'>{ errors.bestBenchpress }</Form.Control.Feedback>
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Kulmasoutu</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type='number'
-                            name='bestRow'
-                            value={userdata.bestRow}
-                            placeholder='kg'
-                            onChange={handleChange}
-                            isInvalid={ !!errors.bestRow}/>
-                        <Form.Control.Feedback type='invalid'>{ errors.bestRow }</Form.Control.Feedback>
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Pystypunnerrus</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type='number'
-                            name='bestOverheadpress'
-                            value={userdata.bestOverheadpress}
-                            placeholder='kg'
-                            onChange={handleChange}
-                            isInvalid={ !!errors.bestOverheadpress}/>
-                        <Form.Control.Feedback type='invalid'>{ errors.bestOverheadpress }</Form.Control.Feedback>
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Maastaveto</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type='number'
-                            name='bestDeadlift'
-                            value={userdata.bestDeadlift}
-                            placeholder='kg'
-                            onChange={handleChange}
-                            isInvalid={ !!errors.bestDeadlift}/>
-                        <Form.Control.Feedback type='invalid'>{ errors.bestDeadlift }</Form.Control.Feedback>
-                    </Col>
-                </Form.Group>
+            <form onSubmit={handleSubmit}>
+                <StyledFormLabel>Käyttäjätunnus</StyledFormLabel>
+                <StyledInput type='text' value={userdata.username} onChange={handleChange} name='username'/>
+                { !!errors.username ? <StyledFormError>{errors.username}</StyledFormError> : '' }
+                <br /><br/>
+                <StyledFormLabel>Salasana</StyledFormLabel>
+                <StyledInput type='password' value={userdata.password} onChange={handleChange} name='password'/>
+                { !!errors.password ? <StyledFormError>{errors.password}</StyledFormError> : '' }
+                <br /><br/>
+                <StyledFormLabel>Salasana uudelleen</StyledFormLabel>
+                <StyledInput type='password' value={userdata.passwordConfirmation} onChange={handleChange} name='password2'/>
+                { !!errors.passwordConfirmation ? <StyledFormError>{errors.passwordConfirmation}</StyledFormError> : '' }
+                <br/><br/>
+                <SmallHeader>Arvioi 5X-maksimisi seuraavissa klassisissa voimaluliikkeissä: kuinka monella kilolla saat viisi toistoa?</SmallHeader>
+                <br />
+                <StyledFormLabel>Kyykky</StyledFormLabel>
+                <StyledKgInput type='number' value={userdata.bestSquat} onChange={handleChange} name='bestSquat'/>
+                { !!errors.bestSquat ? <StyledFormError>{errors.bestSquat}</StyledFormError> : '' }
+                <br/><br/>
+                <StyledFormLabel>Penkkipunnerrus</StyledFormLabel>
+                <StyledKgInput type='number' value={userdata.bestBenchpress} onChange={handleChange} name='bestBenchpress'/>
+                { !!errors.bestBenchpress ? <StyledFormError>{errors.bestBenchpress}</StyledFormError> : '' }
+                <br/><br/>
+                <StyledFormLabel>Kulmasoutu</StyledFormLabel>
+                <StyledKgInput type='number' value={userdata.bestRow} onChange={handleChange} name='bestRow'/>
+                { !!errors.bestRow ? <StyledFormError>{errors.bestRow}</StyledFormError> : '' }
+                <br/><br/>
+                <StyledFormLabel>Pystypunnerrus</StyledFormLabel>
+                <StyledKgInput type='number' value={userdata.bestOverheadpress} onChange={handleChange} name='bestOverheadpress'/>
+                { !!errors.bestOverheadpress ? <StyledFormError>{errors.bestOverheadpress}</StyledFormError> : '' }
+                <br/><br/>
+                <StyledFormLabel>Maastaveto</StyledFormLabel>
+                <StyledKgInput type='number' value={userdata.bestDeadlift} onChange={handleChange} name='bestDeadlift'/>
+                { !!errors.bestDeadlift ? <StyledFormError>{errors.bestDeadlift}</StyledFormError> : '' }
+                <br/><br/>
+
                 <StandardButton type='submit'>Rekisteröidy</StandardButton>
                 <StandardButton>Peruuta</StandardButton>
-            </Form>
+            </form>
         </div>
     )
 }
