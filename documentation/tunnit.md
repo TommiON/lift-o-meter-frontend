@@ -72,4 +72,5 @@
 17.6.|Frontend, toistopainikkeiden väritoiminnallisuus, lisää ulkoasun viilausta|2
 18.6|Frontend, harjoitusten järjestämistoiminto, ulkoasun viilausta, siivousta ja refaktorointia|3
 22.6|Frontend, käyttäjärekisteröitymisen säätämistä|3
-||yhteensä|263
+23.6|Frontend ja backend, stats-toiminnon aloittelua|4
+||yhteensä|267

@@ -128,35 +128,44 @@ const UserAdder = ({ visible, notificationCallback }) => {
             <BigHeader>Lisää uusi käyttäjä</BigHeader>
             <form onSubmit={handleSubmit}>
                 <StyledFormLabel>Käyttäjätunnus</StyledFormLabel>
+
                 <StyledInput type='text' value={userdata.username} onChange={handleChange} name='username'/>
                 { !!errors.username ? <StyledFormError>{errors.username}</StyledFormError> : '' }
                 <br /><br/>
+
                 <StyledFormLabel>Salasana</StyledFormLabel>
                 <StyledInput type='password' value={userdata.password} onChange={handleChange} name='password'/>
                 { !!errors.password ? <StyledFormError>{errors.password}</StyledFormError> : '' }
                 <br /><br/>
+
                 <StyledFormLabel>Salasana uudelleen</StyledFormLabel>
                 <StyledInput type='password' value={userdata.passwordConfirmation} onChange={handleChange} name='password2'/>
                 { !!errors.passwordConfirmation ? <StyledFormError>{errors.passwordConfirmation}</StyledFormError> : '' }
                 <br/><br/>
+
                 <SmallHeader>Arvioi 5X-maksimisi seuraavissa klassisissa voimaluliikkeissä: kuinka monella kilolla saat viisi toistoa?</SmallHeader>
                 <br />
+
                 <StyledFormLabel>Kyykky</StyledFormLabel>
                 <StyledKgInput type='number' value={userdata.bestSquat} onChange={handleChange} name='bestSquat'/>
                 { !!errors.bestSquat ? <StyledFormError>{errors.bestSquat}</StyledFormError> : '' }
                 <br/><br/>
+
                 <StyledFormLabel>Penkkipunnerrus</StyledFormLabel>
                 <StyledKgInput type='number' value={userdata.bestBenchpress} onChange={handleChange} name='bestBenchpress'/>
                 { !!errors.bestBenchpress ? <StyledFormError>{errors.bestBenchpress}</StyledFormError> : '' }
                 <br/><br/>
+
                 <StyledFormLabel>Kulmasoutu</StyledFormLabel>
                 <StyledKgInput type='number' value={userdata.bestRow} onChange={handleChange} name='bestRow'/>
                 { !!errors.bestRow ? <StyledFormError>{errors.bestRow}</StyledFormError> : '' }
                 <br/><br/>
+
                 <StyledFormLabel>Pystypunnerrus</StyledFormLabel>
                 <StyledKgInput type='number' value={userdata.bestOverheadpress} onChange={handleChange} name='bestOverheadpress'/>
                 { !!errors.bestOverheadpress ? <StyledFormError>{errors.bestOverheadpress}</StyledFormError> : '' }
                 <br/><br/>
+                
                 <StyledFormLabel>Maastaveto</StyledFormLabel>
                 <StyledKgInput type='number' value={userdata.bestDeadlift} onChange={handleChange} name='bestDeadlift'/>
                 { !!errors.bestDeadlift ? <StyledFormError>{errors.bestDeadlift}</StyledFormError> : '' }
