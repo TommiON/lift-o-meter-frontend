@@ -73,4 +73,5 @@
 18.6|Frontend, harjoitusten järjestämistoiminto, ulkoasun viilausta, siivousta ja refaktorointia|3
 22.6|Frontend, käyttäjärekisteröitymisen säätämistä|3
 23.6|Frontend ja backend, stats-toiminnon aloittelua|4
-||yhteensä|267
+26.6|Frontend ja backend, stats-toiminnolle tuki backendiin ja alustava toteutus fronttiin|4
+||yhteensä|271

@@ -1,7 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts'
+import statsService from '../services/StatsService'
 
 const Stats = () => {
+
+    const [squats, setSquats] = useState(null)
+    const [benches, setBenches] = useState(null)
+    const [rows, setRows] = useState(null)
+    const [overheads, setOverheads] = useState(null)
+    const [deadlifts, setDeadlifts] = useState(null)
+
+    useEffect(() => {
+        async function fetchHistory() {
+            const history = await statsService.get()
+            setSquats(history.squats)
+            setBenches(history.benches)
+            setRows(history.rows)
+            setOverheads(history.overheads)
+            setDeadlifts(history.deadlifts)
+        }
+        fetchHistory()
+    }, [])
+
+    console.log('kyykkyhistoria: ', squats)
 
     const testData= [
         {x: 1, kg: 70},
@@ -33,9 +54,11 @@ const Stats = () => {
     return(
         <div>
             <LineChart width={550} height={400} >
-                <Line data={testData} type="monotone" dataKey="kg" stroke="blue" />
-                <Line data={testData2} type="monotone" dataKey="kg" stroke="red" />
-                <Line data={testData3} type="monotone" dataKey="kg" stroke="green" />
+                <Line data={squats} type="monotone" dataKey="load" stroke="blue" />
+                <Line data={benches} type="monotone" dataKey="load" stroke="red" />
+                <Line data={rows} type="monotone" dataKey="load" stroke="green" />
+                <Line data={overheads} type="monotone" dataKey="load" stroke="violet" />
+                <Line data={deadlifts} type="monotone" dataKey="load" stroke="orange" />
                 <YAxis />
             </LineChart>
         </div>
