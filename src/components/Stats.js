@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts'
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend } from 'recharts'
 import statsService from '../services/StatsService'
 
 const Stats = () => {
@@ -13,6 +13,7 @@ const Stats = () => {
     useEffect(() => {
         async function fetchHistory() {
             const history = await statsService.get()
+            console.log(history)
             setSquats(history.squats)
             setBenches(history.benches)
             setRows(history.rows)
@@ -22,43 +23,17 @@ const Stats = () => {
         fetchHistory()
     }, [])
 
-    console.log('kyykkyhistoria: ', squats)
-
-    const testData= [
-        {x: 1, kg: 70},
-        {x: 2, kg: 72.5},
-        {x: 3, kg: 60.5},
-        {x: 4, kg: 65},
-        {x: 5, kg: 75},
-        {x: 6, kg: 77.5}
-    ]
-
-    const testData2= [
-        {x: 1, kg: 100},
-        {x: 2, kg: 72.5},
-        {x: 3, kg: 120.5},
-        {x: 4, kg: 125.5},
-        {x: 5, kg: 130},
-        {x: 6, kg: 132.5}
-    ]
-
-    const testData3= [
-        {x: 1, kg: 105},
-        {x: 2, kg: 72.5},
-        {x: 3, kg: 120.5},
-        {x: 4, kg: 125.5},
-        {x: 5, kg: 130},
-        {x: 6, kg: 140.5}
-    ]
-
     return(
         <div>
+            {console.log('stats, squats: ', squats)}
+            {console.log('stats, benches: ', benches)}
             <LineChart width={550} height={400} >
-                <Line data={squats} type="monotone" dataKey="load" stroke="blue" />
-                <Line data={benches} type="monotone" dataKey="load" stroke="red" />
-                <Line data={rows} type="monotone" dataKey="load" stroke="green" />
-                <Line data={overheads} type="monotone" dataKey="load" stroke="violet" />
-                <Line data={deadlifts} type="monotone" dataKey="load" stroke="orange" />
+                <Line data={squats} name='kyykky' type="monotone" dataKey="load" stroke="blue" />
+                <Line data={benches} name='penkkipunnerrus' type="monotone" dataKey="load" stroke="red" />
+                <Line data={rows} name='kulmasoutu' type="monotone" dataKey="load" stroke="green" />
+                <Line data={overheads} name='pystypunnerrus' type="monotone" dataKey="load" stroke="violet" />
+                <Line data={deadlifts} name='maastaveto' type="monotone" dataKey="load" stroke="orange" />
+                <Legend width={160} wrapperStyle={{ bottom: 90, right: -20, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '15px' }} />
                 <YAxis />
             </LineChart>
         </div>
