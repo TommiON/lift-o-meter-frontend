@@ -92,6 +92,8 @@ function App() {
                       <LoginScreen loginFunction={login} visible={!loggedUser} />
                   }
               </Route>
+              {/*
+              
               <Route path="/profile">
                   {loggedUser ?
                       <AccountDetails /> 
@@ -99,6 +101,7 @@ function App() {
                       <LoginScreen loginFunction={login} visible={!loggedUser} />
                   }
               </Route>
+                */}
               <Route path="/logout">
                   <Redirect to="/" />
               </Route>
