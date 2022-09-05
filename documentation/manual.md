@@ -32,6 +32,10 @@ Sovelluksessa liikutaan ylälaidan navigointipalkin avulla. Vasemmanpuoleisin li
 
 Sovelluksen päänäkymä näyttää harjoitukset: ylimpänä seuraavana vuorossa oleva, jonka voi aloittaa painikkeesta, ja tämän alla aikajärjestyksessä aiemmat.
 
+![Päänäkymä](lift_paa.png)
+
 ### Kehitysgraafi
 
 Kehitys-näkymästä löytyy graafi, joka näyttää edistyksen eri liikkeissä.
+
+![Kehitysgraafi](lift_graafi.png)
