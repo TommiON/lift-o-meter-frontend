@@ -20,13 +20,13 @@ Stronglifts 5x5 on erityisesti aloittelijoille suunnattu voimaharjoitteluohjelma
 
 Sovelluksen etusivu tarjoaa sisäänkirjautumistoiminnon sekä linkin uuden käyttäjätunnuksen luomiseen. Sovelluksessa on myös valmiiksi luotu tunnus (käyttäjätunnus **testuser**, salasana **testpw**), jossa simuloituna jonkin verran harjoitushistoriaa.
 
-![Kirjautumissivu](lift_loginruutu.png)
+![Kirjautumissivu](lift_loginruutu.png =200x)
 
 ### Navigointi
 
 Sovelluksessa liikutaan ylälaidan navigointipalkin avulla. Vasemmanpuoleisin linkki vie päänäkymään (joka myös aukeaa kirjautumisen jälkeen), keskimmäinen kehitysgraafiin ja oikeanpuoleisesta kirjaudutaan ulos.
 
-![Navigointi](lift_navi.png)
+![Navigointi](lift_navi.png =200x)
 
 ### Päänäkymä
 
