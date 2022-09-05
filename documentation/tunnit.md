@@ -75,4 +75,5 @@
 23.6|Frontend ja backend, stats-toiminnon aloittelua|4
 26.6|Frontend ja backend, stats-toiminnolle tuki backendiin ja alustava toteutus fronttiin|4
 **27.8.**|Frontend, stats-näkymän säätöä|1
-||yhteensä|272
+**4.9.**|Frontend, pientä käyttöliittymän viimeistelyä. Käyttöohje ja muu dokumentaatio|2
+||yhteensä|274

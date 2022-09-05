@@ -24,7 +24,9 @@ const NavigationBar = ( {logoutFunction, loggedIn } ) => {
                     <NavHeaderCell><NavigationHeader>Lift-o-meter</NavigationHeader></NavHeaderCell>
                     <NavLinkCell><NavigationLink to="/workouts">Treenit</NavigationLink></NavLinkCell>
                     <NavLinkCell><NavigationLink to="/stats">Kehitys</NavigationLink></NavLinkCell>
+                    {/*
                     <NavLinkCell><NavigationLink to="/profile">Profiili</NavigationLink></NavLinkCell>
+                    */}
                     <NavLinkCell><NavigationLink to="/logout" onClick={logoutFunction}>Logout</NavigationLink></NavLinkCell>
                 </tr>
             </table>
